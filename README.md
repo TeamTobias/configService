@@ -133,6 +133,11 @@ spring:
             Kxd7IV8JkyC01gWeUWQx0+BMeIYmcJ9KyhJ+bVVhTNBP1dwuPJd/5WfHKaAs
             -----END RSA PRIVATE KEY-----
           search-paths: basketService,client_Service,client_loginService,couponService,deliveryService,manager_Service,manager_loginService,orderService,pointService,product_cudService,product_readService,recentlyviewedService,review_cudService,review_readService,saler_Service,saler_loginService
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 ```
 
 - `server.port` : 서버의 포트를 설정
@@ -142,3 +147,6 @@ spring:
 - `private-key` : Git 저장소에 접근하기 위한 개인 키
 - `search-paths` : Git 저장소에서 읽어올 구성 파일의 경로
 - `spring.cloud.config.server.git.search-paths` : 구성 파일이 저장되어 있는 Git 저장소의 경로
+- `management.endpoints.web.exposure.include` : Actuator의 엔드포인트를 노출할 것인지 설정
+- `"*"` : 구성 파일을 갱신할 수 있는 엔드포인트, 구성 파일을 조회할 수 있는 엔드포인트를 모두 노출
+

@@ -65,3 +65,8 @@ spring:
             -----END RSA PRIVATE KEY-----
           search-paths: basketService,client_Service,client_loginService,couponService,deliveryService,manager_Service,manager_loginService,orderService,pointService,product_cudService,product_readService,recentlyviewedService,review_cudService,review_readService,saler_Service,saler_loginService
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
