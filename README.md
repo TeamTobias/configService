@@ -74,8 +74,6 @@ server:
 spring:
   cloud:
     config:
-      discovery:
-        enabled: true
       server:
         encrypt.enabled: false
         git:
@@ -140,10 +138,16 @@ management:
     web:
       exposure:
         include: "*"
+
+#Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.tobias: DEBUG
 ```
 
 - `server.port` : 서버의 포트를 설정
-- `spring.cloud.config.discovery.enabled` : 서비스 디스커버리를 사용할 것인지 설정
 - `encrypt.enabled` : 암호화 사용 여부
 - `spring.cloud.config.server.git.uri` : 구성 파일이 저장되어 있는 Git 저장소의 주소
 - `ignore-local-ssh-settings` : 로컬 SSH 설정을 무시할 것인지 설정
@@ -152,4 +156,7 @@ management:
 - `spring.cloud.config.server.git.search-paths` : 구성 파일이 저장되어 있는 Git 저장소의 경로
 - `management.endpoints.web.exposure.include` : Actuator의 엔드포인트를 노출할 것인지 설정
 - `"*"` : 구성 파일을 갱신할 수 있는 엔드포인트, 구성 파일을 조회할 수 있는 엔드포인트를 모두 노출
-
+- `logging.level` : 로깅 레벨을 설정
+- `com.netflix` : Netflix 관련 로깅 레벨을 WARN으로 설정
+- `org.springframework.web` : Spring Web 관련 로깅 레벨을 WARN으로 설정
+- `com.tobias` : 애플리케이션 관련 로깅 레벨을 DEBUG로 설정

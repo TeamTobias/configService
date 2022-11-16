@@ -5,8 +5,6 @@ server:
 spring:
   cloud:
     config:
-      discovery:
-        enabled: true
       server:
         encrypt.enabled: false
         git:
@@ -71,3 +69,10 @@ management:
     web:
       exposure:
         include: "*"
+
+#Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.tobias: DEBUG
