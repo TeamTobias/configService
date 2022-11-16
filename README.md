@@ -21,7 +21,7 @@ ext {
 
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-config-server'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -37,7 +37,32 @@ tasks.named('test') {
 }
 ```
 
+- `spring-cloud-config-server` : 구성 관리 서비스를 제공하는 라이브러리
+- `spring-boot-starter-actuator` : 애플리케이션의 상태를 확인할 수 있는 엔드포인트를 제공하는 라이브러리
+- `spring-cloud-dependencies` : Spring Cloud의 버전을 관리하는 라이브러리
+- `spring-boot-devtools` : 개발 시에만 사용하는 라이브러리
+- `spring-boot-starter-test` : 테스트를 위한 라이브러리
 
-- 스프링 부트 버전: ``id 'org.springframework.boot' version '2.7.5'``
-- 이 서비스에 사용할 스프링 클라우드 프로젝트: ``'org.springframework.cloud:spring-cloud-config-server'``
-- 컨피스 서비스도 레지스트리로 등록할 것임: ``'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'``
+
+<br/>
+---------------
+
+```java
+@SpringBootApplication
+@EnableConfigServer
+public class ConfigServiceApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ConfigServiceApplication.class, args);
+    }
+
+}
+```
+
+- ``@SpringBootApplication``: 스프링 부트 애플리케이션임을 알림
+- ``@EnableConfigServer``: 컨피스 서버로 사용할 것임을 알림
+
+
+<br/>
+---------------
+
