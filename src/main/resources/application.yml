@@ -8,6 +8,7 @@ spring:
       discovery:
         enabled: true
       server:
+        encrypt.enabled: false
         git:
           uri: org-117899436@github.com:TeamTobias/config-Repo.git
           ignore-local-ssh-settings: true

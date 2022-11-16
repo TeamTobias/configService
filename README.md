@@ -77,6 +77,7 @@ spring:
       discovery:
         enabled: true
       server:
+        encrypt.enabled: false
         git:
           uri: org-117899436@github.com:TeamTobias/config-Repo.git
           ignore-local-ssh-settings: true
@@ -133,6 +134,7 @@ spring:
             Kxd7IV8JkyC01gWeUWQx0+BMeIYmcJ9KyhJ+bVVhTNBP1dwuPJd/5WfHKaAs
             -----END RSA PRIVATE KEY-----
           search-paths: basketService,client_Service,client_loginService,couponService,deliveryService,manager_Service,manager_loginService,orderService,pointService,product_cudService,product_readService,recentlyviewedService,review_cudService,review_readService,saler_Service,saler_loginService
+
 management:
   endpoints:
     web:
@@ -142,6 +144,7 @@ management:
 
 - `server.port` : 서버의 포트를 설정
 - `spring.cloud.config.discovery.enabled` : 서비스 디스커버리를 사용할 것인지 설정
+- `encrypt.enabled` : 암호화 사용 여부
 - `spring.cloud.config.server.git.uri` : 구성 파일이 저장되어 있는 Git 저장소의 주소
 - `ignore-local-ssh-settings` : 로컬 SSH 설정을 무시할 것인지 설정
 - `private-key` : Git 저장소에 접근하기 위한 개인 키
