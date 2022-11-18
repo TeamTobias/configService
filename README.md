@@ -9,7 +9,6 @@ plugins {
 
 group = 'com.tobias'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -22,8 +21,8 @@ ext {
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-config-server'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp:3.1.2'
 }
 
 dependencyManagement {
@@ -42,7 +41,7 @@ tasks.named('test') {
 - `spring-cloud-dependencies` : Spring Cloud의 버전을 관리하는 라이브러리
 - `spring-boot-devtools` : 개발 시에만 사용하는 라이브러리
 - `spring-boot-starter-test` : 테스트를 위한 라이브러리
-
+- `spring-cloud-starter-bus-amqp` : RabbitMQ를 이용한 메시지 브로커를 사용하기 위한 라이브러리
 
 <br/>
 ---------------
@@ -69,7 +68,6 @@ public class ConfigServiceApplication {
 ```yaml
 server:
   port: 8888
-
 
 spring:
   cloud:
@@ -132,6 +130,12 @@ spring:
             Kxd7IV8JkyC01gWeUWQx0+BMeIYmcJ9KyhJ+bVVhTNBP1dwuPJd/5WfHKaAs
             -----END RSA PRIVATE KEY-----
           search-paths: basketService,client_Service,client_loginService,couponService,deliveryService,manager_Service,manager_loginService,orderService,pointService,product_cudService,product_readService,recentlyviewedService,review_cudService,review_readService,saler_Service,saler_loginService
+  rabbitmq:
+    host: 127.0.01
+    port: 5672
+    username: guest
+    password: guest
+
 
 management:
   endpoints:
@@ -160,3 +164,8 @@ logging:
 - `com.netflix` : Netflix 관련 로깅 레벨을 WARN으로 설정
 - `org.springframework.web` : Spring Web 관련 로깅 레벨을 WARN으로 설정
 - `com.tobias` : 애플리케이션 관련 로깅 레벨을 DEBUG로 설정
+- `rabbitmq` : RabbitMQ 서버의 주소, 포트, 사용자 이름, 비밀번호를 설정
+- `spring.rabbitmq.host` : RabbitMQ 서버의 주소
+- `spring.rabbitmq.port` : RabbitMQ 서버의 포트
+- `spring.rabbitmq.username` : RabbitMQ 서버의 사용자 이름
+- `spring.rabbitmq.password` : RabbitMQ 서버의 비밀번호
