@@ -2,7 +2,18 @@ server:
   port: 8888
 
 
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
 spring:
+  application:
+    name: configservice
   cloud:
     config:
       server:
@@ -63,6 +74,12 @@ spring:
             Kxd7IV8JkyC01gWeUWQx0+BMeIYmcJ9KyhJ+bVVhTNBP1dwuPJd/5WfHKaAs
             -----END RSA PRIVATE KEY-----
           search-paths: basketService,client_Service,client_loginService,couponService,deliveryService,manager_Service,manager_loginService,orderService,pointService,product_cudService,product_readService,recentlyviewedService,review_cudService,review_readService,saler_Service,saler_loginService
+  rabbitmq:
+    host: 127.0.01
+    port: 5672
+    username: guest
+    password: guest
+
 
 management:
   endpoints:
